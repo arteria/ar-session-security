@@ -41,7 +41,7 @@ if 'sdist' in sys.argv:
 
 
 setup(
-    name='django-session-security',
+    name='ar-session-security',
     version='2.6.0',
     description='Let the user secure his session for usage in public computers',
     author='James Pic',
