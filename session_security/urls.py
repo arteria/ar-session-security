@@ -26,6 +26,5 @@ urlpatterns = [
         'ping/$',
         PingView.as_view(),
         name='session_security_ping',
- 
     )
 ]
