@@ -60,7 +60,7 @@ yourlabs.SessionSecurity.prototype = {
             window.location.reload();
         }
     },
-    
+
     // Called when there has been no activity for more than warnAfter
     // seconds.
     showWarning: function() {
@@ -68,7 +68,7 @@ yourlabs.SessionSecurity.prototype = {
         this.$warning.attr('aria-hidden', 'false');
         $('.session_security_modal').focus();
     },
-    
+
     // Called to hide the warning, for example if there has been activity on
     // the server side - in another browser tab.
     hideWarning: function() {
@@ -136,6 +136,7 @@ yourlabs.SessionSecurity.prototype = {
             nextPing = this.warnAfter - idleFor;
         }
 
+        console.log(this.warnAfter - idleFor);
         // setTimeout expects the timeout value not to exceed
         // a 32-bit unsigned int, so cap the value
         var milliseconds = Math.min(nextPing * 1000, 2147483647)

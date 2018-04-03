@@ -19,12 +19,13 @@ try:
 except ImportError:
     from django.conf.urls.defaults import url
 
-from .views import PingView
+from .views import PingView, CountDownView
 
 urlpatterns = [
     url(
         'ping/$',
         PingView.as_view(),
         name='session_security_ping',
+ 
     )
 ]

@@ -28,3 +28,6 @@ class PingView(generic.View):
         inactive_for = (datetime.now() - last_activity).seconds
         return http.HttpResponse(inactive_for,
                                  content_type='application/json')
+
+
+ 
