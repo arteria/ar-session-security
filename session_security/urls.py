@@ -19,7 +19,7 @@ try:
 except ImportError:
     from django.conf.urls.defaults import url
 
-from .views import PingView, CountDownView
+from .views import PingView 
 
 urlpatterns = [
     url(
