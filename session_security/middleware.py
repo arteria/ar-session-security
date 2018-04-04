@@ -24,7 +24,7 @@ except ImportError:  # Django < 1.10
     # Works perfectly for everyone using MIDDLEWARE_CLASSES
     MiddlewareMixin = object
 
-from .utils import get_last_activity, set_last_activity
+from .utils import get_last_activity, set_last_activity, mark_auto_logged_out
 from .settings import EXPIRE_AFTER, PASSIVE_URLS, PASSIVE_URL_NAMES
 
 
@@ -55,7 +55,7 @@ class SessionSecurityMiddleware(MiddlewareMixin):
 
     def process_request(self, request):
         """ Update last activity time or logout. """
-        
+
         if django.VERSION < (1, 10):
             is_authenticated = request.user.is_authenticated()
         else:
@@ -73,6 +73,8 @@ class SessionSecurityMiddleware(MiddlewareMixin):
         expire_seconds = self.get_expire_seconds(request)
         if delta >= timedelta(seconds=expire_seconds):
             logout(request)
+            mark_auto_logged_out(request.session)
+
         elif (request.path == reverse('session_security_ping') and
                 'idleFor' in request.GET):
             self.update_last_activity(request, now)

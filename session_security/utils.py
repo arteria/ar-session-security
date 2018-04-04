@@ -6,6 +6,12 @@ from datetime import datetime
 def set_last_activity(session, dt):
     """ Set the last activity datetime as a string in the session. """
     session['_session_security'] = dt.strftime('%Y-%m-%dT%H:%M:%S.%f')
+    session['_mark_auto_logged_out'] = False
+
+def mark_auto_logged_out(session):
+    """ Allow to display a massage on the login page.
+    """
+    session['_mark_auto_logged_out'] = True
 
 
 def get_last_activity(session):
@@ -36,4 +42,3 @@ def get_last_activity(session):
         return datetime.now()
     except TypeError:
         return datetime.now()
-

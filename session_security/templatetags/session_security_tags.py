@@ -13,3 +13,10 @@ def expire_after(request):
 @register.filter
 def warn_after(request):
     return WARN_AFTER
+
+@register.filter
+def was_logged_out_automatically(request):
+    try:
+        return session['_mark_auto_logged_out']
+    except:
+        return False

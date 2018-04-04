@@ -84,7 +84,7 @@ yourlabs.SessionSecurity.prototype = {
             return;
 
         this.lastActivity = now;
-
+         
         if (this.$warning.is(':visible')) {
             // Inform the server that the user came back manually, this should
             // block other browser tabs from expiring.
@@ -136,7 +136,7 @@ yourlabs.SessionSecurity.prototype = {
             nextPing = this.warnAfter - idleFor;
         }
 
-        console.log(this.warnAfter - idleFor);
+
         // setTimeout expects the timeout value not to exceed
         // a 32-bit unsigned int, so cap the value
         var milliseconds = Math.min(nextPing * 1000, 2147483647)
